@@ -1,0 +1,27 @@
+<%- include('./templates/head'); %>
+    <main>
+        <div class="jumbotron">
+            <h1>Welcome to HOME</h1>
+        </div>
+        <div>
+            <h2>pintando el titulo y mensaje del index</h2>
+            <p>
+                <%= cont.title %>
+            </p>
+            <p>
+                <%= cont.msg %>
+            </p>
+        </div>
+        <div>
+            <h2>Pintando nombres de mascotas de sistemas operativos y movidas con un forEach</h2>
+            <ul>
+                <% mascots.forEach((mascot)=>{%>
+                    <li>
+                        nombre: <%= mascot.name%>, representando a <%= mascot.organization%>, nacimiento:
+                                <%=mascot.birth_%>
+                    </li>
+                    <%}) %>
+            </ul>
+        </div>
+    </main>
+    <%- include('./templates/footer'); %>

@@ -1,0 +1,19 @@
+<%- include('./templates/head'); %>
+<main>
+    <div class="jumbotron">
+        <h1>Welcome to SERVICES</h1>
+    </div>
+    <div>
+        <h2>Servicios ofrecidos</h2>
+        <div>
+            <% services.forEach((srv)=>{%>
+                <div>
+                    <h3><%= srv.service %></h3>
+                    <p><%= srv.description %></p>
+                </div>
+            <% }) %>
+        </div>
+        <p>número de servicios ofrecidos: <%=services.length%></p>
+    </div>
+</main>
+<%- include('./templates/footer'); %>
