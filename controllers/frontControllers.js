@@ -1,4 +1,6 @@
 //const express=require('express');
+const {consult} = require('../helpers/fetch');
+
 
 const getIndex = (req, res) => {
 
@@ -15,24 +17,14 @@ const getIndex = (req, res) => {
     });//render tendra como 
 }
 
-const getServices = (req, res) => {
+const getServices = async(req, res) => {
+    const response=await consult('api/v1/services','get',res.body);
+    const {data, ok} = await response.json()
+
     res.render('services', {//esto va a services.ejs
         title: 'este es el titulo de services',
         msg: 'mensaje de services',
-        services: [
-            {
-                service: 'service1',
-                description: 'description1'
-            },
-            {
-                service: 'service2',
-                description: 'description2'
-            },
-            {
-                service: 'service3',
-                description: 'description3'
-            }
-        ]
+        services:data
     })
 };
 
@@ -43,10 +35,10 @@ const getContact = (req, res) => {
     })
 }
 
-const getSignUp = (req, res) => {
-    res.render('contact', {
-        title: 'este es el titulo del contact',
-        msg: 'mensaje de contact',
+const getLogIn = (req, res) => {
+    res.render('logIn', {
+        title: 'este es el titulo del logIn',
+        msg: 'mensaje de log in',
     })
 }
 
@@ -55,5 +47,5 @@ module.exports = {
     getIndex,
     getServices,
     getContact,
-    getSignUp
+    getLogIn
 }

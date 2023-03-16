@@ -14,6 +14,8 @@ router.get('/:id', getService);
 
 router.get('/', getServices);
 
+//router.post('/',postService);//poniendo.exist() no haria falta el require?
+
 router.post('/',
     [check('service', 'Especifica el servicio').not().isEmpty(),
     check('description', 'Especifica la descripcion del servicio').not().isEmpty(), validateServices],

@@ -6,15 +6,22 @@
     </div>
     <div>
         <h2>Servicios ofrecidos</h2>
-        <div>
+        <div id="card-s-container">
             <% if(services.length>0){ %>
             <% services.forEach((srv)=>{%>
-                <div>
+                <div class="card-item">
+                    <div class="card-text">
                     <h3><%= srv.service %></h3>
                     <p><%= srv.description %></p>
+                    </div>
+                    <div class="false-buttons-container">
+                        <a class="nav-link">Edit</a>
+                        <a class="nav-link">Delete</a>
+                    </div>
                 </div>
             <% }) %>
             <% } %>
+        <a class="nav-link" href="/admin/services/new">Create new Service</a>
         </div>
         <p>número de servicios ofrecidos: <%=services.length%></p>
     </div>

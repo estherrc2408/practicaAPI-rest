@@ -7,12 +7,14 @@ const {connection} = require('./helpers/dbConnect');
 const app = express ();//retorna una clase
 const port = process.env.PORT || 3000; //config un puerto del dev, si no está, elige el 3000
 
-//middlewares
-//ejs
-app.set('view engine','ejs');
+
 //archivos estaticos
 //app.use(express.static('views',__dirname+'/public'));
 
+//middlewares
+//ejs templates
+app.set('view engine','ejs');
+app.set('views',`${__dirname}/views`);
 //parse application traduce para postman lo que le mandemos de crear y update
 app.use(express.urlencoded({extended:false}));
 
@@ -22,19 +24,18 @@ app.use(express.json());
 //conexion a la base de datos
 connection();
 
-
-
 //cors, llama a cors antes de llamar a las rutas
 app.use(cors());
 
 
 //rutas
-
-
 //de front
 app.use('/',require('./routers/routerFront'));
+app.use('/admin',require('./routers/routerAdmin'));
+
 //de la API
-app.use('/services',require('./routers/routerServices'));
+app.use('/api/v1/services',require('./routers/routerServices'));
+
 app.use('/account',require('./routers/routerUsers'));
 //app.use('/account',require('./routers/routerAuthUsers'));
 
