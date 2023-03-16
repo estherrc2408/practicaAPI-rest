@@ -1,8 +1,6 @@
 const consult = async (path, meth, body) => {
     //meter try catch
-
     try {
-
         const urlBase = 'http://localhost:3000';
         let options = {};
         //const {service,description}=body;
@@ -33,16 +31,22 @@ const consult = async (path, meth, body) => {
         console.log(options);
         console.log(urlBase, '/', path);
         const response = await fetch(`${urlBase}/${path}`, options);
-        console.log(response.status,' ,status, ',response.ok);
-        if(response.ok==false || response.status!=200){
+        console.log(response.status, ' ,status, ', response.ok);
+/*
+en caso de que lo queramos parsear directamente en la consulta.
+
+        response=response.json()
+
+*/
+        if (response.ok == false || response.status != 200) {
             throw response.status
         }
         return response;
-    
+
     } catch (error) {
         return res.status(error).json({
             ok: false,
-            msg:`ERROR ${error}`,
+            msg: `ERROR ${error}`,
         });
     }
 }

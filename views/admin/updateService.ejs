@@ -1,0 +1,20 @@
+<%- include('./templates/head')%>
+<!--
+/admin/services/new
+-->
+<main>
+    <h1>
+       <%=title%>
+    </h1>
+    <section>
+        <form action=<%=`/admin/services/update/${service._id}`%> method="put">
+            <input type="text" id="service" name="service" placeholder="service name" value="<%=service.service%>">
+            <textarea name="description" id="description" cols="30" rows="10" placeholder="Description of the service..." ><%=service.description%></textarea>
+            <input type="submit" value="Update service">
+        </form>
+    </section>
+</main>
+
+
+
+<%- include('./templates/footer')%>
