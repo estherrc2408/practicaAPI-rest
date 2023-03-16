@@ -18,10 +18,11 @@
                             <p>
                                 <%= srv.description %>
                             </p>
+                                <!--`${srv.date.getDay()}/${srv.date.getMonth()}/${srv.date.getFullYear()}`%> -->
                         </div>
                         <div class="false-buttons-container">
-                            <a class="nav-link" href=<%=`/admin/services/edit/${srv._id}`%>>Edit</a>
-                            <a class="nav-link" href=<%=`/admin/service/delete/${srv._id}`%>>Delete</a>
+                            <a class="false-button" href=<%=`/admin/services/edit/${srv._id}`%>>Edit</a>
+                            <a class="false-button" href=<%=`/admin/service/delete/${srv._id}`%>>Delete</a>
                         </div>
                     </div>
                     <% }) %>

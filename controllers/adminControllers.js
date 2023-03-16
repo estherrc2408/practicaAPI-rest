@@ -14,6 +14,7 @@ const getServicesAdmin=async(req,res)=>{
     const response = await consult('api/v1/services','get',res.body);//res o req?
     const {data,ok} = await response.json();
     console.log(data);
+    
 
     res.render('./admin/viewServices',{//esto abre los servicios con botones de edicion vista admin
         title: 'titulo services vista admin',
@@ -42,33 +43,43 @@ const postNewService = async (req, res) => {
         //pedimos el fetch consult(path,method,body)
         await consult('api/v1/services','post',req.body);
 
-        res.redirect('/admin/services/new');
+       return res.redirect('/admin/services/new');
 
     } catch (error) {
-        return res.status(404).json({
-            ok: false,
-            msg: 'ERROR, no se ha podido crear el servicio'
-        })
+        return res.redirect('/admin/services/view');
+        // res.status(404).json({
+        //     ok: false,
+        //     msg: 'ERROR, no se ha podido crear el servicio'
+        // })
     }
     
 }
 
 const updateService = async (req,res) => {
+    try{
         const id=req.params.id;
-        const response=await consult(`api/v1/services/${id}`,'put',res.body);
-        const {data,ok}=await response.json();
+        await consult(`api/v1/services/${id}`,'put',req.body);
+        return res.redirect('/admin/services/view');
+    } catch (error) {
+        return res.redirect('/admin/services/view');}
 }
 
-/*
+
 const deleteService = async(req,res)=>{
-    const responde
+    try{
+    const id=req.params.id;
+    await consult(`api/v1/services/${id}`,'delete',req.body);
+    return res.redirect('/admin/services/view')
+} catch (error) {
+    return res.redirect('/admin/services/view');}
 }
-*/
+
 
 module.exports = {
     getNewService,
     postNewService,
     getServicesAdmin,
     updateService,
-    getUpdateService
+    getUpdateService,
+    deleteService
 };

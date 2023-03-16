@@ -3,16 +3,9 @@ const {consult} = require('../helpers/fetch');
 
 
 const getIndex = (req, res) => {
-
-    const mascots = [
-        { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012 },
-        { name: 'Tux', organization: "Linux", birth_year: 1996 },
-        { name: 'Moby Dock', organization: "Docker", birth_year: 2013 }
-    ];
     const cont = { title: 'este es el titulo del index', msg: 'mensaje del index' }
 
     res.render('index', {
-        mascots,
         cont
     });//render tendra como 
 }

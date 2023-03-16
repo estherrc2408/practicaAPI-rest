@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const{getNewService,postNewService,getServicesAdmin,updateService,getUpdateService}=require('../controllers/adminControllers');
+const{getNewService,postNewService,getServicesAdmin,updateService,getUpdateService,deleteService}=require('../controllers/adminControllers');
 
 //Front
 //mostrar formulario crear nuevo servicio
@@ -14,8 +14,9 @@ router.get('/services/edit/:id',getUpdateService);
 //crear el servicio
 router.post('/services/create',postNewService);
 //update
-router.put('/services/update/:id',updateService);
+router.post('/services/update/:id',updateService);
 //delete
+router.get('/services/delete/:id',deleteService);
 //router.delete('/services/delete/:id',deleteService);
 
 module.exports=router;

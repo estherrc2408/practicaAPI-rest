@@ -1,0 +1,23 @@
+/* #grid-container{
+    display: grid;
+
+}
+.nav-bar{
+    grid-template-columns: auto auto auto auto;
+} */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+#card-s-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+
+}
+.false-button{
+    background-color: #FC6471;
+}

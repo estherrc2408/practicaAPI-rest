@@ -61,15 +61,14 @@ const putService = async (req, res) => {
 
     try {
         const id = req.params.id;
-        const nservice = req.body.service;
+        const service = req.body.service;
         const description = req.body.description;
         //tres args: condicion({id_:id})
-        const updateService = await Service.findByIdAndUpdate({ _id: id }, { $set: { nservice, description } }, { new: true })
+        const updateService = await Service.findByIdAndUpdate({ _id: id }, { $set: { service, description } }, { new: true });
         if (!updateService) {
             return res.status(404).json({
                 ok: false,
                 msg: 'NOT FOUND 404'
-
             })
         } else {
             console.log(updateService);
